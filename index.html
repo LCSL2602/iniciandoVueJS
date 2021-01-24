@@ -12,6 +12,9 @@
         <h1 class="text-center" >
             {{titulo}}
         </h1>
+        <div class="alert alert-danger mb-3" v-if ='bandera' role="alert">
+            COMPLETA TODOS LOS CAMPOS PARA CONTINUAR
+        </div>
         <!--Formulario para agregar empleados-->
         <form v-if="!banderaEditar" >
             <div class="row form-group">
@@ -50,9 +53,7 @@
                 <button class="btn btn-warning btn-block rounded-pill" @click = 'guardarEmpleadoEditado' >Editar empleado</button>
             </div>
         </div>
-        <div class="alert alert-danger" v-if ='bandera' role="alert">
-            COMPLETA TODOS LOS CAMPOS PARA CONTINUAR
-          </div>
+        
          <br>
         <table class="table" >
             <tr class="bg-dark text-light" >

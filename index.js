@@ -74,19 +74,23 @@ const app = new Vue({
                 edad : empleado.edad 
             }
             this.indice = this.empleados.indexOf(empleado) ; 
-            console.log(this.indice)
             
         } ,
         guardarEmpleadoEditado () {
-            this.empleados.splice(this.indice , 1 , this.editarEmpleado) ;
-            this.banderaEditar = false ;
-            this.nuevoEmpleado = {
-                nombre :'' ,
-                apellido : '' ,
-                edad  : ''
-            }
-            localStorage.setItem('empleados' , JSON.stringify(this.empleados));
+            if(this.editarEmpleado.nombre === '' || this.editarEmpleado.apellido === '' || this.editarEmpleado.edad == ''){
+                this.bandera = true ;
+            }else {
 
+                this.empleados.splice(this.indice , 1 , this.editarEmpleado) ;
+                this.banderaEditar = false ;
+                this.nuevoEmpleado = {
+                    nombre :'' ,
+                    apellido : '' ,
+                    edad  : ''
+                }
+                localStorage.setItem('empleados' , JSON.stringify(this.empleados));
+                this.bandera = false ; 
+            }
         }
     },
     computed : {
